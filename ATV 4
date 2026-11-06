@@ -1,0 +1,38 @@
+abstract class Forma {
+    abstract calcularArea(): number;
+}
+
+class Retangulo extends Forma {
+    largura: number;
+    altura: number;
+
+    constructor(largura: number, altura: number) {
+        super();
+        this.largura = largura;
+        this.altura = altura;
+    }
+
+    calcularArea(): number {
+        return this.largura * this.altura;
+    }
+}
+
+class Circulo extends Forma {
+    raio: number;
+
+    constructor(raio: number) {
+        super();
+        this.raio = raio;
+    }
+
+    calcularArea(): number {
+        return Math.PI * Math.pow(this.raio, 2);
+    }
+}
+
+
+const meuRetangulo = new Retangulo(10, 5);
+console.log(`Área do Retângulo: ${meuRetangulo.calcularArea()} m²`); 
+
+const meuCirculo = new Circulo(3);
+console.log(`Área do Círculo: ${meuCirculo.calcularArea().toFixed(2)} m²`); 
