@@ -1,0 +1,43 @@
+class Animal {
+    nome: string;
+
+    constructor(nome: string) {
+        this.nome = nome;
+    }
+
+    emitirSom(): void {
+        console.log(`${this.nome} faz um som genérico.`);
+    }
+}
+
+class Cachorro extends Animal {
+    constructor(nome: string) {
+        super(nome);
+    }
+
+    emitirSom(): void {
+        console.log(`${this.nome} diz: Au Au! 🐾`);
+    }
+}
+
+class Gato extends Animal {
+    constructor(nome: string) {
+        super(nome);
+    }
+
+    emitirSom(): void {
+        console.log(`${this.nome} diz: Miau! 🐱`);
+    }
+}
+
+
+const listaDeAnimais: Animal[] = [
+    new Cachorro("KRATOS"),
+    new Gato("Gato"),
+    new Animal("Criatura Misteriosa")
+];
+
+listaDeAnimais.forEach(animal => {
+    animal.emitirSom();
+});
+
