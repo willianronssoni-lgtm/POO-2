@@ -1,0 +1,71 @@
+abstract class MembroEscolar {
+    abstract executarRotina(): void;
+}
+
+class Pessoa extends MembroEscolar {
+    public nome: string;
+    private id: string;
+
+    constructor(nome: string, id: string) {
+        super();
+        this.nome = nome;
+        this.id = id;
+    }
+
+    public obterId(): string {
+        return this.id;
+    }
+
+    public ejecutarRotina(): void {
+        console.log(`${this.nome} (ID: ${this.obterId()}) está no campus.`);
+    }
+}
+
+class Aluno extends Pessoa {
+    private notas: number[] = [];
+
+    constructor(nome: string, id: string) {
+        super(nome, id);
+    }
+
+    public adicionarNota(nota: number): void {
+        if (nota >= 0 && nota <= 10) {
+            this.notas.push(nota);
+        } else {
+            console.log(`Erro: Nota ${nota} inválida. Use valores de 0 a 10.`);
+        }
+    }
+
+    public executarRotina(): void {
+        console.log(` O aluno ${this.nome} está assistindo às aulas e estudando.`);
+    }
+}
+
+class Professor extends Pessoa {
+    private disciplina: string;
+
+    constructor(nome: string, id: string, disciplina: string) {
+        super(nome, id);
+        this.disciplina = disciplina;
+    }
+
+    public executarRotina(): void {
+        console.log(` O professor ${this.nome} está lecionando a matéria de ${this.disciplina}.`);
+    }
+}
+
+const aluno1 = new Aluno("Bruno Lima", "ALU-987");
+aluno1.adicionarNota(8.5);
+aluno1.adicionarNota(9.0);
+
+const professor1 = new Professor("Dr. Carlos Roberto", "PRF-123", "Arquitetura de Software");
+
+const comunidadeEscolar: MembroEscolar[] = [aluno1, professor1];
+
+console.log("--- ROTINA DIÁRIA DA ESCOLA ---");
+comunidadeEscolar.forEach(membro => {
+    membro.executarRotina();
+});
+
+console.log("\n--- TESTANDO ENCAPSULAMENTO ---");
+console.log(`ID verificado do Professor: ${professor1.obterId()}`);
