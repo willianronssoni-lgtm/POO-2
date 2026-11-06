@@ -1,4 +1,4 @@
-ancaria {
+class ContaBancaria {
     private saldo: number;
 
     constructor(saldoInicial: number) {
@@ -33,8 +33,8 @@ ancaria {
 const minhaConta = new ContaBancaria(1000);
 
 minhaConta.depositar(500); 
-minhaConta.sacar(200);     
+minhaConta.sacar(200);   
 
-console.log(`Saldo Atual: R$ ${minhaConta.consultarSaldo().toFixed(2)}`);
+console.log(`Saldo Atual: R$ ${minhaConta.consultarSaldo().toFixed(2)}`); // Saldo Atual: R$ 1300.00
 
 minhaConta.sacar(2000);   
